@@ -90,8 +90,8 @@
     <td th:text="${receipt[2]}"></td>
     <td th:text="${#dates.format(receipt[3], 'yyyy/MM/dd')}"></td>
     <td>
-      <button th:data-id="${receipt[0]}" onclick="editReceipt(this)">Edit</button>
-      <button th:data-id="${receipt[0]}" onclick="deleteReceipt(this)">Delete</button>
+      <button th:data-id="${receipt[4]}" onclick="editReceipt(this)">Edit</button>
+      <button th:data-id="${receipt[4]}" onclick="deleteReceipt(this)">Delete</button>
     </td>
   </tr>
   </tbody>

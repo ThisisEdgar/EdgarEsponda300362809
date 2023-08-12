@@ -22,7 +22,10 @@
 <body>
 <h2>Edit Sale</h2>
 <form th:action="@{/updateSale}" th:object="${editedSale}" method="post">
-  <input type="hidden" th:field="*{id}">
+  <input type="hidden" th:field="*{id}"><input type="hidden" th:field="*{recno}">
+  <input type="hidden" th:field="*{dot}">
+
+
   <label for="editedItemType">Edited Item type:</label>
   <select id="editedItemType" th:field="*{icode}" required>
     <option value="" disabled>Select option</option>

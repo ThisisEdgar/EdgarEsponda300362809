@@ -1,3 +1,4 @@
+
 package com.example.edgaresponda300362809.controller;
 
 import com.example.edgaresponda300362809.Component.category;
@@ -48,7 +49,7 @@ public class SalesController {
         List<Object[]> receiptDetailsData = new ArrayList<>();
         for (sales sale : salesList) {
             receiptDetailsData.add(new Object[]{
-                    sale.getRecno(), sale.getIcode(), sale.getQty(), sale.getDot()
+                    sale.getRecno(), sale.getIcode(), sale.getQty(), sale.getDot(),sale.getId()
             });
         }
 
@@ -78,9 +79,11 @@ public class SalesController {
             model.addAttribute("editedSale", receipt.get());
             List<items> itemList = itemsRepo.findAll();
             model.addAttribute("items", itemList);
+            model.addAttribute("salesId", receipt.get().getId()); // Pass the sales ID
             return "editSale"; // Return the editSale.html template
+        } else {
+            return "redirect:/salesForm";
         }
-        return "redirect:/salesForm";
     }
 
     @PostMapping("/updateSale")
@@ -90,4 +93,3 @@ public class SalesController {
         return "redirect:/salesForm";
     }
 }
-
