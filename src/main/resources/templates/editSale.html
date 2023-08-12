@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Sale</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+    }
+    form {
+      background-color: #cceeff;
+      padding: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+<h2>Edit Sale</h2>
+<form th:action="@{/updateSale}" th:object="${editedSale}" method="post">
+  <input type="hidden" th:field="*{id}">
+  <label for="editedItemType">Edited Item type:</label>
+  <select id="editedItemType" th:field="*{icode}" required>
+    <option value="" disabled>Select option</option>
+    <th:block th:each="item : ${items}">
+      <option th:value="${item.icode}" th:text="${item.icode + ' - ' + item.idesc}"></option>
+    </th:block>
+  </select>
+
+  <label for="editedQuantity">Edited Quantity:</label>
+  <input type="number" id="editedQuantity" th:field="*{qty}" step="0.01" value="0.0" required>
+
+  <button type="submit">Save</button>
+</form>
+<br>
+<a href="/salesForm">Back</a>
+</body>
+</html>
