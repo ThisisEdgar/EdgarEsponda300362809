@@ -28,7 +28,7 @@ public class SalesController {
     private salesRepository salesRepo;
     @Autowired
     private categoryRepository categoryRepo;
-
+    //Method to display the main page, we need to use the url http://localhost:8080/salesForm to access the main page
     @GetMapping("/salesForm")
     public String salesForm(Model model) {
         List<category> categoryList = categoryRepo.findAll();
@@ -36,7 +36,7 @@ public class SalesController {
         List<sales> salesList = salesRepo.findAll();
         model.addAttribute("salesForm", new sales());
         model.addAttribute("items", itemList);
-        //
+        // Creat
         List<Object[]> categorySalesData = new ArrayList<>();
         for (category cat : categoryList) {
             long totalSales = salesList.stream()
@@ -65,7 +65,7 @@ public class SalesController {
         return "redirect:/salesForm";
     }
 
-
+    // Save the sale
     @PostMapping("/submit")
     public String submitSalesForm(sales sales) {
         // Save or update the sales data to the database using the salesRepo

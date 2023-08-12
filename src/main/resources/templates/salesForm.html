@@ -52,7 +52,7 @@
   </tr>
   </tbody>
 </table>
-
+<!--Display the sales form-->
 <form id="salesForm" th:action="@{/submit}" th:object="${salesForm}" method="post">
   <label for="recno">ReceiptNo:</label>
   <input type="number" id="recno" th:field="*{recno}" value="0" required><br>
